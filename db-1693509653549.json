@@ -1,0 +1,54 @@
+{
+  "guru": [
+    {
+      "id": 1,
+      "nama": "yuda adi",
+      "nip": "9876",
+      "nuptk": "1234",
+      "peranan": "Kepala Sekolah",
+      "status": "nonaktif"
+    }
+  ],
+  "opsiperanan": [
+    "guru",
+    "kepala Sekolah",
+    "Admin Tu",
+    "BK"
+  ],
+  "siswa": [
+    {
+      "id": 1,
+      "nama": "ali",
+      "nis": "3245678",
+      "nik": "345678",
+      "jurusan": "mipa",
+      "kelas": "10",
+      "id_spp": 1,
+      "status": "nonaktif"
+    }
+  ],
+  "opsistatus": [
+    "aktif",
+    "nonaktif"
+  ],
+  "jurusan": [
+    {
+      "id": 1,
+      "nama": "Mipa"
+    }
+  ],
+  "kelas": [
+    {
+      "id": 1,
+      "nama": "XII"
+    },
+    {
+      "id": 2,
+      "nama": "XI"
+    },
+    {
+      "id": 3,
+      "nama": "X"
+    }
+  ]
+}

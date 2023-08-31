@@ -1,25 +1,48 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHashHistory } from "vue-router";
+import LoginV from "../views/LoginV.vue";
+import DashboardV from "../views/DashboardV.vue";
+// import BukuInduk from "../views/BukuInduk.vue";
+import store from '../store/index.js'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'Login',
+    component: LoginV,
   },
+
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+    path: '/dashboard',
+    name: 'DashboardV',
+    component: DashboardV,
+    meta: { requiresAuth: true }
+  },
+];
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
-})
+  routes,
+});
 
-export default router
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
+    if (!store.state.loggedInUser) {
+      // Cek local storage untuk pengguna yang sudah login
+      const loggedInUserFromLocalStorage = JSON.parse(localStorage.getItem('loggedInUser'));
+      if (loggedInUserFromLocalStorage) {
+        store.commit('setLoggedInUser', loggedInUserFromLocalStorage);
+        store.commit('setSidebarVisibility', true);
+        next();
+      } else {
+        next({ name: 'Login' }); // Redirect to login if not logged in
+      }
+    } else {
+      store.commit('setSidebarVisibility', true);
+      next();
+    }
+  } else {
+    next();
+  }
+});
+
+export default router;

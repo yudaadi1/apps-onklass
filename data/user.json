@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "nis": "123",
+        "nama": "dilla",
+        "password": "12345",
+        "id_sekolah": 1
+    },
+    {
+        "id": 2,
+        "nis": "0987654",
+        "nama": "yuda",
+        "password": "diskola2023",
+        "id_sekolah": 2
+    }
+]
